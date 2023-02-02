@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title{
+            background-color: bisque;
+        }
+    </style>
+</head>
+<body>
+    <!-- 准备好一个“容器” -->
+	<div id="test"></div>
+
+	<!-- 引入react核心库 -->
+	<script type="text/javascript" src="../js/react.development.js"></script>
+	<!-- 引入react-dom，用于支持react操作DOM -->
+	<script type="text/javascript" src="../js/react-dom.development.js"></script>
+	<!-- 引入babel，用于将jsx转为js -->
+	<script type="text/javascript" src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+        let data = [1,2,3]
+        //内联样式,表达式,类名
+        let el = <div className="title">
+                <h1 style={{fontSize:12}}>{
+                    data.forEach(p=>{
+                        console.log(p);
+                    })
+
+                    
+                }</h1>
+            </div>
+
+            //这是一个语句,可以运行,但是并没有产生值
+
+
+
+        let el2 = <div >
+            {
+                data.map(p=>{
+                    return "num"+p
+                })
+            }
+            </div>
+
+        ReactDOM.render(el2,document.getElementById('test'))
+
+
+        
+    </script>
+   
+</body>
+</html>

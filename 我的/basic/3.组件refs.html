@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title{
+            background-color: bisque;
+        }
+    </style>
+</head>
+<body>
+    <!-- 准备好一个“容器” -->
+	<div id="test"></div>
+
+	<!-- 引入react核心库 -->
+	<script type="text/javascript" src="../js/react.development.js"></script>
+	<!-- 引入react-dom，用于支持react操作DOM -->
+	<script type="text/javascript" src="../js/react-dom.development.js"></script>
+	<!-- 引入babel，用于将jsx转为js -->
+	<script type="text/javascript" src="../js/babel.min.js"></script>
+    	<!-- 引入prop-types，用于对组件标签属性进行限制 -->
+	<script type="text/javascript" src="../js/prop-types.js"></script>
+
+    <script type="text/babel">
+        class Cp extends React.Component{
+            myRef = React.createRef()
+            //关于class的写法,见ES6
+
+
+            constructor(props){
+                super(props)
+                console.log(props);
+                
+            }
+
+            //改成箭头函数后,不用再bind
+            fun1 = ()=>{
+                console.log(this.refs);
+                console.log(this.refs.input1.value);
+
+                console.log(this.input);
+
+                console.log(this.myRef);
+                
+            }
+
+            render(){
+                return <div>
+                        <input type="text" ref="input1"/>
+                        <input type="text" ref={c => this.input = c} />
+                        <input type="text" />
+                        <button onClick={this.fun1}>click</button>
+                    </div>
+                    //这里ref={c => this.input = c} c是这个dom,这条语句将这个dom挂载到实例this上
+                    //因此this.refs里没有input,因为根本没去动refs
+                
+            }
+
+        }
+        ReactDOM.render(<Cp a="1" b="2"/>,document.getElementById('test'))
+
+
+        
+    </script>
+   
+</body>
+</html>

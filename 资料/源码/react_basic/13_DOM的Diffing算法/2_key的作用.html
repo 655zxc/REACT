@@ -111,6 +111,8 @@
 					<h3>使用index（索引值）作为key</h3>
 					<ul>
 						{
+							//就像vfor一样
+							//react里可以用表达式返回jsx,生成dom
 							this.state.persons.map((personObj,index)=>{
 								return <li key={index}>{personObj.name}---{personObj.age}<input type="text"/></li>
 							})

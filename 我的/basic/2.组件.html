@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title{
+            background-color: bisque;
+        }
+    </style>
+</head>
+<body>
+    <!-- 准备好一个“容器” -->
+	<div id="test"></div>
+
+	<!-- 引入react核心库 -->
+	<script type="text/javascript" src="../js/react.development.js"></script>
+	<!-- 引入react-dom，用于支持react操作DOM -->
+	<script type="text/javascript" src="../js/react-dom.development.js"></script>
+	<!-- 引入babel，用于将jsx转为js -->
+	<script type="text/javascript" src="../js/babel.min.js"></script>
+    	<!-- 引入prop-types，用于对组件标签属性进行限制 -->
+	<script type="text/javascript" src="../js/prop-types.js"></script>
+
+    <script type="text/babel">
+        class Cp extends React.Component{
+            constructor(props){
+                super(props)
+                this.state = {isHot:true,wind:"comfortable"}
+                console.log(props);
+                this.fun1 = this.fun1.bind(this)//调用fun1时,使用这里的this.fun1
+            }
+            //属性有state,props,fun1
+
+            //props限制
+            static propTypes = {
+                name:PropTypes.string
+            }
+
+            static defaultProps = {
+                name:"123"
+            }
+
+            fun1(){
+                this.setState({isHot:!this.state.isHot,wind:"tough"})
+            }
+
+            render(){
+                return <div onClick={this.fun1}>{this.state.isHot?"hot":"cold"},{this.state.wind}</div>
+                
+            }
+
+            //在对象的方法里访问对象的属性时,要加this
+        }
+
+        
+        //也可以在外写,函数式组件只能这么写,类式两者均可
+        // Cp.propTypes = {
+        //     name:PropTypes.string
+        // }
+
+
+        ReactDOM.render(<Cp />,document.getElementById('test'))
+
+
+        
+    </script>
+   
+</body>
+</html>

@@ -1,0 +1,25 @@
+.container{
+    width: 500px;
+    height: 400px;
+    margin: 0 auto;
+    margin-top:20px;
+    border: 5px solid #FF7F97;
+    padding: 20px;
+    border-radius: 4px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Items{
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
+    height: 200px;
+    overflow: auto;
+}
+
+
+
+
